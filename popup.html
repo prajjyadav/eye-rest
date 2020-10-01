@@ -5,14 +5,19 @@
     <link href="styles.css" rel="stylesheet">
     <style>
       body {
-        width: 290px;
+        width: 400px;
         margin: 0;
         background-color: mediumspringgreen;
         border: #C8D2FC solid 8px;
       }
       #counter {
         margin: 0 0 0.5em;
-        font-size: 2.5em;
+        font-size: 1.5em;
+        text-align: center;
+      }
+      #upTime {
+        margin: 0 0 0.5em;
+        font-size: 1.5em;
         text-align: center;
       }
       #switch {
@@ -58,7 +63,9 @@
         <button id="reset" class="reset">Reset</button>
       </div>
       <div class="ph2 button-box">
+        <p id="upTime">&nbsp;</p>
         <p id="counter">&nbsp;</p>
+  
         <button id="switch" class="is-not-paused">Pause</button>
 
       </div>
