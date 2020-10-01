@@ -1,8 +1,10 @@
 let counterElement = document.getElementById('counter');
+let upTimeElement = document.getElementById('upTime');
 let switchButton = document.getElementById('switch');
 let resetButton = document.getElementById('reset');
 let switchClasses = switchButton.classList;
 let countdownInterval;
+let upTimeInterval;
 let count;
 
 let secToMin = function(timeInSec) {
@@ -23,9 +25,22 @@ let updateCountdown = function() {
     // 0 and the actual count. We basically want to prevent the popup
     // from ever displaying a negative number.
     count = Math.max(0, Math.ceil((data.nextAlarmTime - Date.now())/1000));
-    counterElement.innerHTML = secToMin(count);
+    counterElement.innerHTML = 'Countdown '+secToMin(count);
   });
 };
+
+// this will update the total uptime of browser
+let updateUpTime = function() {
+  chrome.storage.local.get('upTime', function(data) {
+    // This sort of prevents the race condition by choosing between
+    // 0 and the actual count. We basically want to prevent the popup
+    // from ever displaying a negative number.
+    count = Math.ceil((Date.now()- data.upTime)/1000);
+    upTimeElement.innerHTML = 'UpTime '+secToMin(count);
+  });
+};
+
+upTimeInterval = setInterval(updateUpTime, 100);
 
 // Check if isPaused. If not,
 // Call the update countdown function immediately
