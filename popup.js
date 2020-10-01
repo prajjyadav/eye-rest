@@ -1,5 +1,6 @@
 let counterElement = document.getElementById('counter');
 let switchButton = document.getElementById('switch');
+let resetButton = document.getElementById('reset');
 let switchClasses = switchButton.classList;
 let countdownInterval;
 let count;
@@ -77,4 +78,9 @@ switchButton.onclick = function() {
     clearInterval(countdownInterval);
     clearAlarm();
   }
+}
+
+// reset function to reset the timer back
+resetButton.onclick = function() {
+  clearAndCreateAlarm(20,20);
 }
